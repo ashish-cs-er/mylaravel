@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/additem', function () {
+    return view('item');
+});
+
+Route::post('items', 'Items@index');
+Route::get('items', 'Items@index');
