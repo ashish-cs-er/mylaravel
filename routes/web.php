@@ -13,6 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::view('noaccess', 'noaccess');
+
+//for group middleware
+/*
+Route::group(['middleware'=>['customAuth']], function(){
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::view('profile', 'profile');
+});
+*/
+
+
+//route middleware is limited to specific route only
+Route::view('profile', 'profile')->middleware('customRouteAuth');
