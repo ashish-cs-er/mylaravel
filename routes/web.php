@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('users','UsersController@index');
+
+Route::view('home','home');
+Route::view('profile', 'profile');
