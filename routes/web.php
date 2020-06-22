@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,19 @@ Route::post('login','Login@index');
 
 
 Route::group(['middleware' => ['CustomAuth']], function () {
-    Route::get('/profile', function () {
+    Route::get('/profile/{lang}', function($lang) {
+        App::setlocale($lang);
         return view('profile');
+    });
+    Route::get('/local/{lang}', function($lang) {
+        App::setlocale($lang);
+        return view('local');
     });
 
     Route::get('/logout','Login@logout');
+
+    Route::view('/upload','upload');
+    Route::post('/uploadme','UploadMe@index');
 });
+
+
