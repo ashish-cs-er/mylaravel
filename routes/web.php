@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::view('login','login');
+Route::post('login','Login@index');
+
+
+
+Route::group(['middleware' => ['CustomAuth']], function () {
+    Route::get('/profile', function () {
+        return view('profile');
+    });
+
+    Route::get('/logout','Login@logout');
+});
