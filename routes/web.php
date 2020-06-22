@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/profile', function () {
+    if(!session()->has('user')){
+        return redirect('login');
+    }
+    return view('profile');
+});
+
+Route::view('login','login');
+
+Route::post('login','Login@index');
+
+Route::get('logout','Login@logout');
