@@ -18,3 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/profile','Profile@index');
+
+Route::view('/addprofile','addprofile');
+Route::post('/addprofile','Profile@addprofile');
+
+Route::view('/updateprofile','updateprofile');
+Route::post('/updateprofile','Profile@updateprofile');
